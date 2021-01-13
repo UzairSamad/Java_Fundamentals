@@ -8,11 +8,9 @@ public class Main {
         byte years = (byte) Console.readNumber("Period (Years): ", 1, 30);
 
         MortageCalculator calculator = new MortageCalculator(principal,annualInterest,years);
-        PrintMortafe printMortafe = new PrintMortafe(calculator);
-        printMortafe.printPaymentSchedule();
-        printMortafe.printMortgage();
-
-
+        MortageReport mortageReport = new MortageReport(calculator);
+        mortageReport.printPaymentSchedule();
+        mortageReport.printMortgage();
     }
 
 }

@@ -1,8 +1,10 @@
 package com.testproject;
 
+import java.text.NumberFormat;
+
 public class MortageCalculator {
-    public final static byte MONTHS_IN_YEAR = 12;
-    public final static byte PERCENT = 100;
+    private final static byte MONTHS_IN_YEAR = 12;
+    private final static byte PERCENT = 100;
     private int  principal ;
     private float  annualInterest ;
     private short years ;
@@ -13,31 +15,38 @@ public class MortageCalculator {
         this.years = year;
     }
 
-
     public  double calculateBalance(short numberOfPaymentsMade) {
-        float monthlyInterest = annualInterest / PERCENT / MONTHS_IN_YEAR;
-        float numberOfPayments = years * MONTHS_IN_YEAR;
+        float monthlyInterest = getMonthlyInterest();
+        float numberOfPayments = getNumberOfPayments();
         double balance = principal
                 * (Math.pow(1 + monthlyInterest, numberOfPayments) - Math.pow(1 + monthlyInterest, numberOfPaymentsMade))
                 / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
-
         return balance;
     }
 
+    public double[] getRemainingBalances(){
+        double[] balances = new double[getNumberOfPayments()];
+        for (short month = 1; month <= balances.length; month++) {
+            balances[month-1]= calculateBalance(month);
+        }
+        return  balances;
+    }
+
     public  double calculateMortgage() {
-
-        float monthlyInterest = annualInterest / PERCENT / MONTHS_IN_YEAR;
-        float numberOfPayments = years * MONTHS_IN_YEAR;
-
+        float monthlyInterest = getMonthlyInterest();
+        float numberOfPayments = getNumberOfPayments();
         double mortgage = principal
                 * (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments))
                 / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
-
         return mortgage;
     }
 
-
-    public short getYears() {
-        return years;
+    private int getNumberOfPayments() {
+        return years * MONTHS_IN_YEAR;
     }
+
+    private float getMonthlyInterest() {
+        return annualInterest / PERCENT / MONTHS_IN_YEAR;
+    }
+
 }
