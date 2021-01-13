@@ -3,7 +3,7 @@ package com.testproject;
 public class MortageCalculator {
     private int  principal ;
     private float  annualInterest ;
-    private byte years ;
+    private short years ;
 
     public MortageCalculator(int principal, float annualInterest, byte year) {
         this.principal = principal;
@@ -32,5 +32,10 @@ public class MortageCalculator {
                 / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
 
         return mortgage;
+    }
+
+
+    public short getYears() {
+        return years;
     }
 }
