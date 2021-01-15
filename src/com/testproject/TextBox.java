@@ -3,15 +3,23 @@ package com.testproject;
 public class  TextBox extends UIControl {
     private   String text ="Initial"; //this is field of a class
 
-// inherting UI Control Class in it , first the Constructor of parent/super class will be called then sub class
-//    a class which extends another class in it is a sub-class of that class
+
 
     public TextBox( ) {
-//        if our super class had any parameters in its constructor we should pass it in supper keyword
-//        here calling the constructor of a super-class with super method and pass parameters
+
         super(true);
-        System.out.println("TextBox");
+//        Inherited from UI Control Class
+        System.out.println(overRideValue);
     }
+
+//    over-riding setOverRideValue method of superclass
+//    in super class it was just setting hard code values you can see it in UI Control
+//    after overriding here we maked it parameter based dynamic
+    @Override
+    public void setOverRideValue(String value) {
+        this.overRideValue = value;
+    }
+
 
     public void setText(String text){
         this.text = text;
