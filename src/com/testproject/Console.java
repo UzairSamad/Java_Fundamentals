@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Console {
     private static Scanner scanner = new Scanner(System.in);
+    protected static  String Name = "Uzair";
     public  static  double readNumber(){
         return scanner.nextDouble();
     }
