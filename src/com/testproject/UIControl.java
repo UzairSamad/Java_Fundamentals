@@ -8,7 +8,7 @@ public class UIControl {
         System.out.println("UI CoNTROL");
         this.isEnabled = isEnabled;
     }
-// function setting just dynamic value
+// function setting just static value
     public void setOverRideValue(String value){
         this.overRideValue = "In UI";
     }
