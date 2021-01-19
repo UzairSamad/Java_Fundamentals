@@ -4,15 +4,15 @@ public class  TextBox extends UIControl {
     private   String text ="Initial"; //this is field of a class
 
 
+    //overriding method of a classUi Control => polymorphism
 
-    public TextBox( ) {
+    @Override
+    public void render() {
+        System.out.println("Render TextBox");
 
-        super(true);
-//        Inherited from UI Control Class
-        System.out.println(overRideValue);
     }
 
-//    over-riding setOverRideValue method of superclass
+    //    over-riding setOverRideValue method of superclass
 //    in super class it was just setting hard code values you can see it in UI Control
 //    after overriding here we maked it parameter based dynamic
     @Override
